@@ -15,18 +15,28 @@
 
     <br>
 
+    <a href="/customers/new">Add New Customer</a>
+
+    <br><br>
+
     <table border="1" cellpadding="8">
         <tr>
             <th>Full Name</th>
             <th>Email</th>
             <th>Phone</th>
+            <th>Action</th>
         </tr>
 
         <?php foreach ($customers as $customer): ?>
             <tr>
-                <td><?= $customer['full_name'] ?></td>
-                <td><?= $customer['email'] ?></td>
-                <td><?= $customer['phone'] ?></td>
+                <td><?= esc($customer['full_name']) ?></td>
+                <td><?= esc($customer['email']) ?></td>
+                <td><?= esc($customer['phone'] ?? '') ?></td>
+                <td>
+                    <a href="/customers/edit/<?= $customer['id'] ?>">
+                        Edit
+                    </a>
+                </td>
             </tr>
         <?php endforeach; ?>
     </table>
